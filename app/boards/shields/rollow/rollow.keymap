@@ -30,80 +30,77 @@
 
                 default_layer {
 /* Default
- * .-----------------------------------------.                    .-----------------------------------------.
- * | TAB  |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  | BKSP |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | CTRL |   A  |   S  |   D  |   F  |   G  |                    |   H  |   J  |   K  |   L  |   ;  |   '  |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | SHFT |   Z  |   X  |   C  |   V  |   B  |-------.    .-------|   N  |   M  |   ,  |   .  |   /  | SHFT |
- * '-----------------------------------------/       /     \      \-----------------------------------------'
- *                          |  GUI |  LWR | / Space /       \ Space\  |TT(RS)| Tab  |
- *                          |      |      |/       /         \      \ |      |      |
- *                          '-------------''------'           '------''-------------'
+ * .---------------------------------------------.                    .-----------------------------------------.
+ * | TAB      |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  | BKSP |
+ * |----------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * | ESC/CTRL |   A  |   S  |   D  |   F  |   G  |                    |   H  |   J  |   K  |   L  |   ;  |'/CTRL|
+ * |----------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * | SHFT     |   Z  |   X  |   C  |   V  |   B  |-------.    .-------|   N  |   M  |   ,  |   .  |   /  | SHFT |
+ * '---------------------------------------------/       /     \      \-----------------------------------------'
+ *                              |  GUI |  LWR | / Space /       \ Enter\  |RAISE | ALT  |
+ *                              |      |      |/       /         \      \ |      |      |
+ *                              '-------------''------'           '------''-------------'
  *
  *   Encoder Left: Up <-> Down
  *   Encoder Right: Left <-> Right
  */
-                        bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp RSHFT
-                  &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
-                        >;
-
+			bindings = <
+&kp TAB         &kp Q   &kp W   &kp E	        &kp R   &kp T           &kp Y   &kp U   &kp I           &kp O   &kp P		&kp BSPC
+&mt LCTRL ESC	&kp A   &kp S	&kp D	        &kp F   &kp G           &kp H   &kp J   &kp K           &kp L   &kp SEMI	&mt RCTRL SQT
+&kp LSHFT	&kp Z   &kp X	&kp C	        &kp V   &kp B           &kp N   &kp M   &kp COMMA       &kp DOT	&kp FSLH	&kp RSHFT
+                                &kp LGUI        &mo 1   &kp SPC         &kp RET	&mo 2	&kp RALT
+			>;
                         sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
-                };
+		};
 
                 lower_layer {
 /* LOWER
  * .-----------------------------------------.                    .-----------------------------------------.
- * |  ESC |   1  |  2   |  3   |  4   |  5   |                    |   6  |   7  |   8  |   9  |   0  | BKSP |
+ * |   ~  |   1  |  2   |  3   |  4   |  5   |                    |   6  |   7  |   8  |   9  |   0  | Del  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | BTCLR| BT1  | BT2  | BT3  | BT4  | BT5  |                    |  LFT |  DWN |   UP |  RGT |      |      |
+ * |      |   !  |  @   |  #   |  $   |  %   |                    |   ^  |   &  |   *  |   (  |   )  |   `  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | SHFT |      |      |      |      |      |-------.    .-------|      |      |      |      |      |      |
+ * |      |   |  |  \   |  {   |  -   |  [   |-------.    .-------|   ]  |   _  |   }  |   =  |   +  |      |
  * '-----------------------------------------/       /     \      \-----------------------------------------'
- *                          |  GUI |      | / Space /       \ Enter\  |      |  ALT |
+ *                          |      |      | /       /       \      \  |      |      |
  *                          |      |      |/       /         \      \ |      |      |
  *                          '-------------''------'           '------''-------------'
- * 
+ *
  *   Encoder Left: PG_UP <-> PG_DN
- *   Encoder Right: -
+ *   Encoder Right: PG_UP <-> PG_DN
  */
-                        bindings = <
-   &kp ESC    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5            &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4      &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &kp LSHFT  &trans       &trans       &trans       &trans       &trans            &trans   &trans   &trans &trans    &trans &trans
-                                        &kp LGUI     &trans       &kp SPACE         &kp RET &trans &kp RALT
-                            >;
-
-                            sensor-bindings = <&inc_dec_kp PG_UP PG_DN &inc_dec_kp PG_UP PG_DN>;
+ 			bindings = <
+&kp TILDE	&kp N1		&kp N2		&kp N3		&kp N4		&kp N5          &kp N6		&kp N7		&kp N8		&kp N9		&kp N0		&kp DEL
+&trans  	&kp EXCL	&kp AT		&kp HASH	&kp DLLR	&kp PRCNT       &kp CARET	&kp AMPS	&kp STAR	&kp LPAR	&kp RPAR	&kp GRAVE
+&trans  	&kp PIPE	&kp BSLH	&kp LBRC	&kp MINUS	&kp LBKT        &kp RBKT	&kp UNDER	&kp RBRC	&kp EQUAL 	&kp PLUS	&trans
+                                                &trans		&trans		&trans		&trans          &trans          &trans
+			>;
+                        sensor-bindings = <&inc_dec_kp PG_UP PG_DN &inc_dec_kp PG_UP PG_DN>;
                 };
 
                 raise_layer {
 /* RAISE
  * .-----------------------------------------.                    .-----------------------------------------.
- * | ESC  |   !  |   @  |   #  |   $  |   %  |                    |   ^  |   &  |   *  |   (  |   )  | BKSP |
+ * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |                    |  F7  |  F8  |  F9  | F10  | F11  | F12  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | CTRL |      |      | Prev | Next |      |                    |   -  |   =  |   {  |   }  |  "|" |   `  |
+ * |      |VolMut| Prev | Play | Next |Power |                    |BTClr | Home |   ↑  |  End | Ins  |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | SHFT |      |      |      |      |      |-------.    .-------|   _  |   +  |   [  |   ]  |   \  |   ~  |
+ * |      | Menu |BTPrev|OutTog|BTNext|Reset |-------.    .-------|Reset |   ←  |   ↓  |   →  | PScrn|      |
  * '-----------------------------------------/       /     \      \-----------------------------------------'
- *                          | Play |      | / Space /       \ Enter\  |      |  ALT |
- *                          | Paus |      |/       /         \      \ |      |      |
+ *                          |      |      | /       /       \      \  |      |      |
+ *                          |      |      |/       /         \      \ |      |      |
  *                          '------------''------'            '------''-------------'
  *
- *   Encoder Left: -
- *   Encoder Right: VOL_UP <-> VOL_D
+ *   Encoder Left: VOL_UP <-> VOL_D
+ *   Encoder Right: BRI_UP <-> BRI_DN
  */
                         bindings = <
-    &kp  ESC  &kp EXCL  &kp AT  &kp HASH   &kp DLLR   &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSPC
-    &kp LCTRL &trans    &trans  &kp C_PREV &kp C_NEXT &trans      &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp PIPE &kp GRAVE
-    &kp LSHFT &trans    &trans  &trans     &trans     &trans      &trans    &trans    &trans          &trans   &kp BSLH &kp TILDE
-                                   &kp LGUI &trans &kp SPACE   &kp RET &trans &kp RALT
+&kp F1  &kp F2          &kp F3          &kp F4          &kp F5          &kp F6          &kp F7          &kp F8          &kp F9          &kp F10         &kp F11         &kp F12
+&trans  &kp C_MUTE      &kp C_Prev      &kp C_Play      &kp C_Next      &kp C_PWR       &bt BT_CLR      &kp HOME        &kp UP          &kp END         &kp INS         &trans
+&trans  &kp K_APP       &bt BT_PRV      &out OUT_TOG    &bt BT_NXT      &reset          &reset          &kp LEFT        &KP DOWN        &KP RIGHT       &kp PSCRN       &trans
+                                        &trans          &trans          &trans          &trans          &trans          &trans
                         >;
-   
-                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_BRI_UP C_BRI_DN>;
                 };
  
         };
